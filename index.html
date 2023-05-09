@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda de Ropa</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Inicio</a>
+        <form id="search-form">
+          <input type="text" id="search-input" placeholder="Buscar" />
+          <input
+            type="button"
+            onclick="location.href='./Nav/Catalog.html';"
+            value="Search"
+          />
+        </form>
+        <a href="./Nav/Nav-Header/SignIn.html">Sign In</a>
+        <a href="./Nav/Nav-Header/LogIn.html">Log In</a>
+        <a href="./Nav/Nav-Header/Cart.html">
+          <img src="./assets/carrito.png" width="30px" height="30px" />
+        </a>
+      </nav>
+      <br />
+      <nav>
+        <a href="./Nav/Nav-Header2/hombres.html">Hombres</a>
+        <a href="./Nav/Nav-Header2/mujeres.html">Mujeres</a>
+        <a href="./Nav/Nav-Header2/ninos.html">Niños</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Tienda de Ropa</h1>
+      <div class="destacados">
+        <h2>Productos destacados</h2>
+        <ul>
+          <li>
+            <a href="./Nav/ProductView.html">
+              <img
+                src="https://via.placeholder.com/400x400.png?text=Producto+1"
+                alt="Producto 1"
+              />
+            </a>
+            <h3>Producto 1</h3>
+            <p>Descripción del producto</p>
+          </li>
+          <li>
+            <a href="./Nav/ProductView.html">
+              <img
+                src="https://via.placeholder.com/400x400.png?text=Producto+1"
+                alt="Producto 1"
+              />
+            </a>
+            <h3>Producto 2</h3>
+            <p>Descripción del producto</p>
+          </li>
+        </ul>
+      </div>
+      <div class="categorias">
+        <h2>Categorías</h2>
+        <ul>
+          <li>
+            <img
+              src="https://via.placeholder.com/400x400.png?text=Mujeres"
+              alt="Mujeres"
+            />
+            <h3>Mujeres</h3>
+            <a href="./Nav/Nav-Header2/mujeres.html">Ver productos</a>
+          </li>
+          <li>
+            <img
+              src="https://via.placeholder.com/400x400.png?text=Hombres"
+              alt="Hombres"
+            />
+            <h3>Hombres</h3>
+            <a href="./Nav/Nav-Header2/hombres.html">Ver productos</a>
+          </li>
+          <li>
+            <img
+              src="https://via.placeholder.com/400x400.png?text=Niños"
+              alt="Niños"
+            />
+            <h3>Niños</h3>
+            <a href="./Nav/Nav-Header2/ninos.html">Ver productos</a>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <p>Derechos reservados &copy; 2023</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

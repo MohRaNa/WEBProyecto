@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#search-form {
+  display: flex;
+}
+
+#search-input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#search-input:focus {
+  outline: none;
+}
+
+button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.destacados {
+  margin-bottom: 40px;
+}
+
+.destacados h2 {
+  margin-top: 0;
+}
+
+.destacados ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.destacados li {
+  width: 48%;
+  margin-bottom: 40px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.destacados li img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.destacados li h3 {
+  margin-top: 0;
+}
+
+.destacados li p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.destacados li button {
+  display: block;
+  margin: 0 auto;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.destacados li button:hover {
+  background-color: #000;
+}
+
+.categorias h2 {
+  margin-top: 0;
+}
+
+.categorias ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.categorias li {
+  width: 30%;
+  margin-bottom: 40px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.categorias li img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.categorias li h3 {
+  margin-top: 0;
+}
+
+.categorias li a {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.categorias li a:hover {
+  background-color: #000;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+  
+  
+  
+  
+  
+  
+  
