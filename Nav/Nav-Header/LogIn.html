@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <title>Ropa - Niños</title>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
     <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      form {
+        border: 3px solid #f1f1f1;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #020202;
+        color: rgb(255, 255, 255);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -31,8 +73,61 @@
       </nav>
     </header>
 
-    <main></main>
+    <main>
+      <h2>Login Form</h2>
+      <form action="agradecimiento.html">
+        <div class="container">
+          <label for="name"><b>Nombre</b></label>
+          <input
+            type="text"
+            placeholder="Ingresa nombre"
+            name="name"
+            required
+          />
 
+          <label for="apellido"><b>Apellidos</b></label>
+          <input
+            type="text"
+            placeholder="Ingresa Apellidos"
+            name="apellido"
+            required
+          />
+
+          <label for="uname"><b>Usuario</b></label>
+          <input
+            type="text"
+            placeholder="Ingresa Usuario"
+            name="uname"
+            required
+          />
+
+          <label for="email"><b>Correo</b></label>
+          <input
+            type="email"
+            placeholder="Ingresa email"
+            name="email"
+            required
+          />
+
+          <label for="psw"><b>Contraseña</b></label>
+          <input
+            type="password"
+            placeholder="Ingresa Password"
+            name="psw"
+            required
+          />
+
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" />
+            Recuerdame
+          </label>
+        </div>
+        <div class="container" style="background-color: #f1f1f1">
+          <span> ¿Ya tienes cuenta? <a href="./SignIn.html">Sign In</a></span>
+        </div>
+      </form>
+    </main>
     <footer>
       <p>Todos los derechos reservados. &copy; 2023</p>
     </footer>
