@@ -41,10 +41,10 @@
       </nav>
     </header>
     <main>
-        <%		//Archivo: Datos.aspx
-		string Nombre, Matricula, Calificacion;
+        <%		//Archivo: Save.aspx
+		string Name, LastName, Email, Country, State, City, Zip, Street, Contact;
 
-		string sql =@"SELECT idUser, name, lastName, email, country, state, city, zip, street, password, contact FROM [dbo].[User] " ;	
+		string sql =@"SELECT  name, lastName, email, country, state, city, zip, street, contact FROM [dbo].[User] " ;	
 												 
 		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
               
@@ -55,17 +55,22 @@
 
 				SqlDataReader dr = cmd.ExecuteReader();
 				
-				Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Nombre</td><td>Matr&iacutecula</td><td>Calificacion</td></tr>");
+        Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>LastName</td><td>Email</td><td>Country</td><td>State</td><td>City</td><td>Zip</td><td>Street</td><td>Contact</td></tr>");
 				
 				while(dr.Read())
 				{
-					
-					Nombre = dr[0].ToString();
-					Matricula = dr[1].ToString();
-					Calificacion = dr[2].ToString();
-					
-					Response.Write("<tr><td>"+Nombre+"</td><td>"+Matricula+"</td><td>"+Calificacion+"</td></tr>");
-					
+          
+					Name = dr[0].ToString();
+					LastName= dr[1].ToString();
+					Email = dr[2].ToString();
+					Country = dr[3].ToString();
+          State = dr[4].ToString();
+          City = dr[5].ToString();
+          Zip = dr[6].ToString();
+          Street = dr[7].ToString();
+          Contact = dr[8].ToString();
+
+					Response.Write("<tr><td>"+Name+"</td><td>"+LastName+"</td><td>"+Email+"</td><td>"+Country+"</td><td>"+State+"</td><td>"+City+"</td><td>"+Zip+"</td><td>"+Street+"</td><td>"+Contact+"</td></tr>");	
 					
 				}
 				
@@ -73,9 +78,7 @@
 				
 				Response.Write("</table>");
 
-               }
-
-
+        }
     %>
     </main>
     <footer>
