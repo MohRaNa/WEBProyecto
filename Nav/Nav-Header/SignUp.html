@@ -5,100 +5,81 @@
     <title>SignUp</title>
     <link rel="stylesheet" href="../../css/styles.css" />
     <style>
-
-      .form {
+      body {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 100%;
-        padding: 10px 10px 10px 10px;
-        width: 600px;
-        margin-right: auto;
-        margin-left: auto;
-        border: 1px solid #931420;
-        background-color: rgb(241, 202, 208);
       }
-      input[type=text]{
-        width: 40%;
+      form {
+        border: 3px solid #f1f1f1;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="number"] {
+        width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
-        border: 2px solid pink;
-        border-radius: 4px;
-      }
-      label{
-        color: maroon;
-        font-weight: bold;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
       }
 
-      h1{
-        text-align: center;
+      .submit {
+        background-color: #020202;
+        color: rgb(255, 255, 255);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
       }
 
+      .submit:hover {
+        opacity: 0.8;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
     </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="../../index.html">Inicio</a>
-        <form id="search-form">
-          <input type="text" id="search-input" placeholder="Buscar" />
-          <input
-            type="button"
-            onclick="location.href='../Catalog.html';"
-            value="Search"
-          />
-          <input
-          type="button"
-          onclick="location.href='../../User/Consulta.aspx';"
-          value="Consultar Todos Los Usuarios"
-        />
-        </form>
-        <a href="./SignUp.html">Sign Up</a>
-        <a href="./LogIn.html">Log In</a>
-        <a href="./Cart.html">
-          <img src="../../assets/carrito.png" width="30px" height="30px" />
-        </a>
-      </nav>
-      <br />
-      <nav>
-        <a href="../Nav-Header2/hombres.html">Hombres</a>
-        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
-        <a href="../Nav-Header2/ninos.html">Niños</a>
-      </nav>
-    </header>
-
-    <h1>Registro de Datos</h1>
-
+    <main>  
     <form class="form" action="../../user/Save.aspx" method='post' id="form">
-      <label for="idUser">Username:</label><br />
-      <input type="number" id="idUser" name="idUser" /><br />
-      <label for="name">Nombre:</label><br />
-      <input type="text" id="name" name="name" /><br />
-      <label for="lastname">Apellido:</label><br />
-      <input type="text" id="lastname" name="lastname" /><br />
-      <label for="email">Email:</label><br />
-      <input type="text" id="email" name="email" /><br />
-      <label for="country">País:</label><br />
-      <input type="text" id="country" name="country" /><br />
-      <label for="state">Estado:</label><br />
-      <input type="text" id="state" name="state" /><br />
-      <label for="city">Ciudad:</label><br />
-      <input type="text" id="city" name="city" /><br />
-      <label for="zip">Zip:</label><br />
-      <input type="number" id="zip" name="zip" /><br />
-      <label for="street">Calle:</label><br />
-      <input type="text" id="street" name="street" /><br />
-      <label for="password">Contraseña:</label><br />
-      <input type="text" id="password" name="password" /><br />
-      <label for="contact">Contacto:</label><br />
-      <input type="number" id="contact" name="contact" /><br />
-      <br />
-      <input type="submit" value="Submit" />
+      <h1 style="text-align:center">Sign Up</h1>
+
+        <div class="container">
+        <label for="name">Nombre:</label><br />
+        <input type="text" id="name" name="name" /><br />
+        <label for="lastname">Apellido:</label><br />
+        <input type="text" id="lastname" name="lastname" /><br />
+        <label for="email">Email:</label><br />
+        <input type="text" id="email" name="email" /><br />
+        <label for="country">País:</label><br />
+        <input type="text" id="country" name="country" /><br />
+        <label for="state">Estado:</label><br />
+        <input type="text" id="state" name="state" /><br />
+        <label for="city">Ciudad:</label><br />
+        <input type="text" id="city" name="city" /><br />
+        <label for="zip">Zip:</label><br />
+        <input type="number" id="zip" name="zip" /><br />
+        <label for="street">Calle:</label><br />
+        <input type="text" id="street" name="street" /><br />
+        <label for="password">Contraseña:</label><br />
+        <input type="text" id="password" name="password" /><br />
+        <label for="contact">Contacto:</label><br />
+        <input type="number" id="contact" name="contact" /><br />
+        <br />
+        <input class="submit" type="submit" value="Submit" />
+      </div>
     </form>
 
-    <main></main>
-    <footer>
-      <p>Todos los derechos reservados. &copy; 2023</p>
-    </footer>
-
+  </main>
     <script src="script.js"></script>
   </body>
 </html>

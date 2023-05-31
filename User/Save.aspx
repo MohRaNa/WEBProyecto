@@ -6,7 +6,6 @@
 
 <%		//Archivo: Save.aspx
         
-        int idUser = Int16.Parse(Request.Form["idUser"]);
 		string name = Request.Form["name"];
 		string lastname = Request.Form["lastname"];
 		string email = Request.Form["email"];
@@ -20,14 +19,13 @@
 		string sql = "";	
 
 
-        sql = "INSERT INTO [dbo].[User] (idUser, name, lastName, email, country, state, city, zip, street, password, contact) VALUES (@idUser, @name, @lastname, @email, @country, @state, @city, @zip, @street, @password, @contact)";		
+        sql = "INSERT INTO [dbo].[User] ( name, lastName, email, country, state, city, zip, street, password, contact) VALUES (@idUser, @name, @lastname, @email, @country, @state, @city, @zip, @street, @password, @contact)";		
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))  
 			  {
                   conn.Open();
 				  
                   SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
                   
-                  cmd.Parameters.AddWithValue("@idUser", idUser);
 				  cmd.Parameters.AddWithValue("@name", name);
 				  cmd.Parameters.AddWithValue("@lastname",lastname);
 				  cmd.Parameters.AddWithValue("@email", email);
