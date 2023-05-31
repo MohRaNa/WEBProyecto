@@ -2,6 +2,10 @@
 <%@ import namespace = "System" %>
 <%@ import namespace = "System.Data.SqlClient" %>
 <%@ import namespace = "System.Configuration" %>
+<%@ import namespace = "System.Numerics" %>
+<%@ import namespace = "System.Globalization" %>
+
+
 
 
 <%		//Archivo: Save.aspx
@@ -12,14 +16,14 @@
 		string country = Request.Form["country"];
         string state = Request.Form["state"];
         string city = Request.Form["city"];
-		int zip = Int16.Parse(Request.Form["zip"]);
+		int zip = int.Parse(Request.Form["zip"]);
         string street = Request.Form["street"];
         string password = Request.Form["password"];
-        int contact = Int16.Parse(Request.Form["contact"]);
+        string contact = Request.Form["contact"];
 		string sql = "";	
 
 
-        sql = "INSERT INTO [dbo].[User] ( name, lastName, email, country, state, city, zip, street, password, contact) VALUES (@idUser, @name, @lastname, @email, @country, @state, @city, @zip, @street, @password, @contact)";		
+        sql = "INSERT INTO [dbo].[User] (name, lastName, email, country, state, city, zip, street, password, contact) VALUES (@name, @lastname, @email, @country, @state, @city, @zip, @street, @password, @contact)";		
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))  
 			  {
                   conn.Open();

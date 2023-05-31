@@ -41,7 +41,7 @@
       </nav>
     </header>
     <main>
-        <%		//Archivo: Save.aspx
+        <%		//Archivo: Consulta.aspx
 		string Name, LastName, Email, Country, State, City, Zip, Street, Contact;
 
 		string sql =@"SELECT  name, lastName, email, country, state, city, zip, street, contact FROM [dbo].[User] " ;	
