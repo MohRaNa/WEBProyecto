@@ -9,18 +9,9 @@
     <header>
       <nav>
         <a href="../../index.html">Inicio</a>
-        <form id="search-form">
-          <input type="text" id="search-input" placeholder="Buscar" />
-          <input
-            type="button"
-            onclick="location.href='../Catalog.html';"
-            value="Search"
-          />
-          <input
-          type="button"
-          onclick="location.href='../../User/Consulta.aspx';"
-          value="Consultar Todos Los Usuarios"
-        />
+        <form  id="form" action="../Nav-Header/Search.aspx" method="post"> 
+          <input type="text" id="search-input" name="search-input" placeholder="Buscar" />
+          <input class="submit" type="submit" value="Submit" />
         </form>
         <a href="../Nav-Header/SignUp.html">Sign Up</a>
         <a href="../Nav-Header/LogIn.html">Log In</a>

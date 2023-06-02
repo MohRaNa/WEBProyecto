@@ -14,35 +14,27 @@
     <header>
       <nav>
         <a href="../../index.html">Inicio</a>
-        <form id="search-form">
-          <input type="text" id="search-input" placeholder="Buscar" />
-          <input
-            type="button"
-            onclick="location.href='../Catalog.html';"
-            value="Search"
-          />
-          <input
-          type="button"
-          onclick="location.href='../../Consulta.aspx';"
-          value="Consultar Todos Los Usuarios"
-        />
+        <form  id="form" action="./Search.aspx" method="post"> 
+          <input type="text" id="search-input" name="search-input" placeholder="Buscar" />
+          <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="../Nav-Header/SignUp.html">Sign Up</a>
-        <a href="../Nav-Header/LogIn.html">Log In</a>
-        <a href="../Nav-Header/Cart.html">
+        <a href="./SignUp.html">Sign Up</a>
+        <a href="./LogIn.html">Log In</a>
+        <a href="./Cart.html">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
       </nav>
       <br />
       <nav>
-        <a href="./hombres.html">Hombres</a>
-        <a href="./mujeres.html">Mujeres</a>
-        <a href="./ninos.html">Niños</a>
+        <a href="../Nav-Header2/hombres.html">Hombres</a>
+        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
+        <a href="../Nav-Header2/ninos.html">Niños</a>
       </nav>
     </header>
     <main>
         <%		//Archivo: Search.aspx
 		string searchName = Request.Form["search-input"];
+
     string Name, Description, Cost, Color, Stock, Size;
 
 		string sql =@"SELECT name, description, size, cost, color, stock FROM [dbo].[Product] WHERE name like  '%" + searchName + "%'" ;	
@@ -54,7 +46,7 @@
         SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
         SqlDataReader dr = cmd.ExecuteReader();
 				
-        Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>Description</td><td>Size</td><td>Cost</td><td>State</td><td>Color</td><td>Stock</td></tr>");
+        Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>Description</td><td>Size</td><td>Cost</td><td>Color</td><td>Stock</td></tr>");
 				
 				while(dr.Read())
 				{
