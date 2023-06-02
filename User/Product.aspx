@@ -2,25 +2,25 @@
 <%@ import namespace = "System" %>
 <%@ import namespace = "System.Data.SqlClient" %>
 <%@ import namespace = "System.Configuration" %>
+<%@ import namespace = "System.Numerics" %>
+<%@ import namespace = "System.Globalization" %>
 
 
 <%		//Archivo: Save.aspx
-        string idProduct_form =  Request.Form["idProduct"];
-        int idProduct = Int16.Parse(idProduct);
 		string name = Request.Form["name"];
 		string description = Request.Form["description"];
 		string size = Request.Form["size"];
 		string cost = Request.Form["cost"];
         string color = Request.Form["color"];
         string stock_form =  Request.Form["stock"];
-		int stock = Int16.Parse(stock);
+		int stock = int.Parse(stock_form);
         string idUser_form =  Request.Form["idUser"];
-        int idUser = Int16.Parse(idUser);
+        int idUser = int.Parse(idUser_form);
 		string sql = "";	
 
 
 				//sql = @"INSERT INTO dbo.Product (idProduct,name,description,size,cost,color,stock,idUser) VALUES (@idProduct, @name, @description, @size, @cost, @color, @stock, @idUser) " ;
-				sql = "INSERT into [dbo].[Product] (idProduct,name,description,size,cost,color,stock,idUser) VALUES (idProduct,name,description,size,cost,color,stock,idUser); ";
+				sql = "INSERT into [dbo].[Product] (name,description,size,cost,color,stock,idUser) VALUES (@name,@description,@size,@cost,@color,@stock,@idUser); ";
 		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
               
 			  {
@@ -28,7 +28,6 @@
 				  
                   SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
                   
-                  cmd.Parameters.AddWithValue("@idProduct", idProduct);
 				  cmd.Parameters.AddWithValue("@name", name);
 				  cmd.Parameters.AddWithValue("@description",description);
 				  cmd.Parameters.AddWithValue("@size", size);

@@ -78,8 +78,6 @@
 
       <form class="form" action="../../user/Product.aspx" method="post" id="form">
         <div class="container"></div>
-      <label for="idProduct">idProduct:</label><br />
-      <input type="number" id="idProduct" name="idProduct" /><br />
       <label for="name">Nombre:</label><br />
       <input type="text" id="name" name="name" /><br />
       <label for="description">Descripcion:</label><br />

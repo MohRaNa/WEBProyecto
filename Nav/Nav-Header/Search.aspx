@@ -46,7 +46,6 @@
         SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
         SqlDataReader dr = cmd.ExecuteReader();
 				
-        Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>Description</td><td>Size</td><td>Cost</td><td>Color</td><td>Stock</td></tr>");
 				
 				while(dr.Read())
 				{
@@ -58,7 +57,8 @@
           Color = dr[4].ToString();
           Stock = dr[5].ToString();
 
-					Response.Write("<tr><td>"+Name+"</td><td>"+Description+"</td><td>"+Size+"</td><td>"+Cost+"</td><td>"+Color+"</td><td>"+Stock+"</tr>");	
+
+					Response.Write("<tr><td>"+Name+"</td><td>"+Description+"</td><td>"+Size+"</td><td>"+Cost+"</td><td>"+Color+"</td><td>"+Stock+"</tr></br>");	
 					
 				}
 				
