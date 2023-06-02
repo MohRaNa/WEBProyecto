@@ -47,7 +47,7 @@
         SqlDataReader dr = cmd.ExecuteReader();
 				
 				
-				while(dr.Read())
+				while(dr.Read())  
 				{
           
 					Name = dr[0].ToString();
