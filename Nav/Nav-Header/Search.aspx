@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Ropa - Mujeres</title>
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
   </head>
   <body>
     <header>
@@ -41,38 +41,35 @@
       </nav>
     </header>
     <main>
-        <%		//Archivo: Consulta.aspx
-		string Name, LastName, Email, Country, State, City, Zip, Street, Contact;
+        <%		//Archivo: Search.aspx
+		string searchName = Request.Form["search-input"];
+    string Name, Description, Cost, Color, Stock, Size;
 
-		string sql =@"SELECT name, lastName, email, country, state, city, zip, street, contact FROM [dbo].[User] " ;	
+		string sql =@"SELECT name, description, size, cost, color, stock FROM [dbo].[Product] WHERE name like  '%" + searchName + "%'" ;	
 												 
 		using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
               
 			  {
-          conn.Open();
-            
-          SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
-          SqlDataReader dr = cmd.ExecuteReader();
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(sql,conn); //ejecutamos la instruccion
+        SqlDataReader dr = cmd.ExecuteReader();
+				
+        Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>Description</td><td>Size</td><td>Cost</td><td>State</td><td>Color</td><td>Stock</td></tr>");
+				
+				while(dr.Read())
+				{
           
-          Response.Write("<table border='1' style='border-collapse:collapse'><tr><td>Name</td><td>LastName</td><td>Email</td><td>Country</td><td>State</td><td>City</td><td>Zip</td><td>Street</td><td>Contact</td></tr>");
-          
-          while(dr.Read())
-          {
-            
-            Name = dr[0].ToString();
-            LastName= dr[1].ToString();
-            Email = dr[2].ToString();
-            Country = dr[3].ToString();
-            State = dr[4].ToString();
-            City = dr[5].ToString();
-            Zip = dr[6].ToString();
-            Street = dr[7].ToString();
-            Contact = dr[8].ToString();
+					Name = dr[0].ToString();
+					Description= dr[1].ToString();
+					Size = dr[2].ToString();
+					Cost = dr[3].ToString();
+          Color = dr[4].ToString();
+          Stock = dr[5].ToString();
 
-            Response.Write("<tr><td>"+Name+"</td><td>"+LastName+"</td><td>"+Email+"</td><td>"+Country+"</td><td>"+State+"</td><td>"+City+"</td><td>"+Zip+"</td><td>"+Street+"</td><td>"+Contact+"</td></tr>");	
-            
-          }
-          
+					Response.Write("<tr><td>"+Name+"</td><td>"+Description+"</td><td>"+Size+"</td><td>"+Cost+"</td><td>"+Color+"</td><td>"+Stock+"</tr>");	
+					
+				}
+				
 				conn.Close();
 				
 				Response.Write("</table>");

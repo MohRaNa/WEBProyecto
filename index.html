@@ -10,13 +10,9 @@
     <header>
       <nav>
         <a href="index.html">Inicio</a>
-        <form id="search-form">
-          <input type="text" id="search-input" placeholder="Buscar" />
-          <input
-            type="button"
-            onclick="location.href='./Nav/Catalog.html';"
-            value="Search"
-          />
+        <form  id="form" action="./Nav/Nav-Header/Search.aspx" method="post"> 
+          <input type="text" id="search-input" name="search-input" placeholder="Buscar" />
+          <input class="submit" type="submit" value="Submit" />
         </form>
         <a href="./Nav/Nav-Header/SignUp.html">SignUp</a>
         <a href="./Nav/Nav-Header/LogIn.html">Log In</a>
