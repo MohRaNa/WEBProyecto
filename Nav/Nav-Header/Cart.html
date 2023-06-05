@@ -1,16 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head runat="server">
     <meta charset="UTF-8" />
-    <title>Ropa - Hombres</title>
+    <title>Carrito de Compras</title>
     <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .total {
+        font-weight: bold;
+      }
+
+      .checkout-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .checkout-button:hover {
+        background-color: #45a049;
+      }
+    </style>
   </head>
   <body>
     <header>
       <nav>
         <a href="../../index.html">Inicio</a>
-        <form  id="form" action="./Search.aspx" method="post"> 
-          <input type="text" id="search-input" name="search-input" placeholder="Buscar" />
+        <form id="form" action="./Search.aspx" method="post">
+          <input
+            type="text"
+            id="search-input"
+            name="search-input"
+            placeholder="Buscar"
+          />
           <input class="submit" type="submit" value="Submit" />
         </form>
         <a href="./SignUp.html">Sign Up</a>
@@ -26,8 +72,62 @@
         <a href="../Nav-Header2/ninos.html">Niños</a>
       </nav>
     </header>
+    <table id="cart-table">
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+      </tr>
+    </table>
 
-    <main></main>
+    <div id="cart-total"></div>
+
+    <a href="#" id="checkout-button" class="checkout-button">Realizar pago</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Cargar los productos del carrito desde la base de datos
+        loadCartItems();
+
+        function loadCartItems() {
+          $.ajax({
+            url: "cart_items.aspx",
+            type: "GET",
+            success: function (response) {
+              var cartItems = JSON.parse(response);
+
+              // Limpiar la tabla
+              $("#cart-table").empty();
+
+              // Iterar sobre los elementos del carrito y agregar filas a la tabla
+              for (var i = 0; i < cartItems.length; i++) {
+                var cartItem = cartItems[i];
+
+                var row = $("<tr>");
+                row.append($("<td>").text(cartItem.Name));
+                row.append($("<td>").text("$" + cartItem.Cost.toFixed(2)));
+                row.append($("<td>").text(cartItem.Quantity));
+                row.append($("<td>").text("$" + cartItem.Total.toFixed(2)));
+
+                $("#cart-table").append(row);
+              }
+
+              // Mostrar el total
+              var total = cartItems.reduce(function (sum, cartItem) {
+                return sum + cartItem.Total;
+              }, 0);
+
+              $("#cart-total").text("Total: $" + total.toFixed(2));
+            },
+            error: function () {
+              alert("Error al cargar los productos del carrito.");
+            },
+          });
+        }
+      });
+    </script>
 
     <footer>
       <p>Todos los derechos reservados. &copy; 2023</p>
