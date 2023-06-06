@@ -1,3 +1,5 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="cart_items.aspx.cs" Inherits="cartItems" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
@@ -80,6 +82,7 @@
         <th>Total</th>
       </tr>
     </table>
+  </br>
 
     <div id="cart-total"></div>
 
@@ -106,9 +109,8 @@
                 var cartItem = cartItems[i];
 
                 var row = $("<tr>");
-                row.append($("<td>").text(cartItem.Name));
-                row.append($("<td>").text("$" + cartItem.Cost.toFixed(2)));
-                row.append($("<td>").text(cartItem.Quantity));
+                row.append($("<td>").text(cartItem.name));
+                row.append($("<td>").text("$" + cartItem.cost.toFixed(2)));
                 row.append($("<td>").text("$" + cartItem.Total.toFixed(2)));
 
                 $("#cart-table").append(row);
