@@ -76,36 +76,81 @@
       </nav>
     </header>
 
-<%   //Archivo: Carrito.aspx
+<% // Archivo: Carrito.aspx
     string Producto, Precio, Cantidad;
 
-    string sql =@"SELECT * FROM Product";
+    string sql = @"SELECT * FROM Product";
 
     using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
-
     {
         conn.Open();
 
-        SqlCommand cmd = new SqlCommand(sql,conn);
+        SqlCommand cmd = new SqlCommand(sql, conn);
 
         SqlDataReader dr = cmd.ExecuteReader();
- Response.Write("<table border='1' style='border-collapse:collapse:' style='font-weight: bold'><tr><td>Producto</td><td>Precio</td><td>Cantidad</td></tr>");
-	    while(dr.Read())
-            {
-                Producto = dr[1].ToString();
-                Precio = dr[4].ToString();
-                Cantidad = dr[6].ToString();
+        Response.Write("<table border='1' style='border-collapse:collapse:' style='font-weight: bold'><tr><td>Producto</td><td>Precio</td><td>Cantidad</td><td>Total</td></tr>");
+        while (dr.Read())
+        {
+            Producto = dr[1].ToString();
+            Precio = dr[4].ToString();
+            Cantidad = dr[6].ToString();
 
-                Response.Write("<tr><td>"+Producto+"</td><td>"+Precio+"</td><td>"+Cantidad+"</td></tr>");
-            }
+            float precioFloat = float.Parse(Precio);
+            int cantidadInt = int.Parse(Cantidad);
+            float total = precioFloat * cantidadInt;
+
+            Response.Write("<tr><td>" + Producto + "</td><td>" + Precio + "</td><td><input type='number' id='cantidad_" + Producto + "' name='cantidad_" + Producto + "' min='0' max='" + Cantidad + "' value='" + Cantidad + "' onchange='calcularTotal(\"" + Producto + "\", " + precioFloat + ")'/></td><td id='total_" + Producto + "'>" + total + "</td></tr>");
+        }
 
         conn.Close();
 
         Response.Write("</table>");
     }
     
+    Response.Write("<div id='sumaTotal'></div>");
     Response.Write("</body></html>");
+
+    // Agregar el botón que invoca la función guardarCambios()
+    Response.Write("<button onclick='guardarCambios()'>Guardar cambios</button>");
+
+    // Agregar el script de JavaScript para validar la cantidad, calcular el total y mostrar la suma total
+    Response.Write("<script>");
+    Response.Write("function guardarCambios() {");
+    Response.Write("    var filas = document.getElementsByTagName('tr');");
+    Response.Write("    for (var i = 0; i < filas.length; i++) {");
+    Response.Write("        var cantidadInput = document.getElementById('cantidad_' + i);");
+    Response.Write("        var nuevaCantidad = parseInt(cantidadInput.value);");
+    Response.Write("        if (isNaN(nuevaCantidad) || nuevaCantidad < 0 || nuevaCantidad > cantidadInput.max) {");
+    Response.Write("            alert('Ingrese un número válido para la cantidad.');");
+    Response.Write("            return;");
+    Response.Write("        }");
+    Response.Write("        var precio = parseFloat(cantidadInput.getAttribute('data-precio'));");
+    Response.Write("        calcularTotal(i, precio);");
+    Response.Write("    }");
+    Response.Write("    mostrarSumaTotal();");
+    Response.Write("    alert('Cambios guardados.');");
+    Response.Write("}");
+
+    Response.Write("function calcularTotal(i, precio) {");
+    Response.Write("    var cantidadInput = document.getElementById('cantidad_' + i);");
+    Response.Write("    var totalElement = document.getElementById('total_' + i);");
+    Response.Write("    var nuevaCantidad = parseInt(cantidadInput.value);");
+    Response.Write("    var total = precio * nuevaCantidad;");
+    Response.Write("    totalElement.textContent = total.toFixed(2);");
+    Response.Write("}");
+
+    Response.Write("function mostrarSumaTotal() {");
+    Response.Write("    var totales = document.querySelectorAll('[id^=\"total_\"]');");
+    Response.Write("    var sumaTotal = 0;");
+    Response.Write("    for (var i = 0; i < totales.length; i++) {");
+    Response.Write("        var total = parseFloat(totales[i].textContent);");
+    Response.Write("        sumaTotal += total;");
+    Response.Write("    }");
+    Response.Write("    document.getElementById('sumaTotal').textContent = 'Suma total: ' + sumaTotal.toFixed(2);");
+    Response.Write("}");
+    Response.Write("</script>");
 %>
+
 
 <div id="cart-total"></div>
 
