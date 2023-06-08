@@ -20,7 +20,7 @@
         </form>
         <a href="./SignUp.html">Sign Up</a>
         <a href="./LogIn.html">Log In</a>
-        <a href="./Cart.html">
+        <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
       </nav>
