@@ -13,7 +13,7 @@
   <body>
     <header>
       <nav>
-        <a href="../../index.html">Inicio</a>
+        <a href="../../index.aspx">Inicio</a>
         <form id="form" action="../Nav-Header/Search.aspx" method="post">
           <input
             type="text"
@@ -23,8 +23,8 @@
           />
           <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="../Nav-Header/SignUp.html">Sign Up</a>
-        <a href="../Nav-Header/LogIn.html">Log In</a>
+        <a href="../Nav-Header/SignUp.aspx">Sign Up</a>
+        <a href="../Nav-Header/LogIn.aspx">Log In</a>
         <a href="../Nav-Header/Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>

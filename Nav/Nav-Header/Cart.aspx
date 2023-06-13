@@ -52,7 +52,7 @@
   <body>
     <header>
       <nav>
-        <a href="../../index.html">Inicio</a>
+        <a href="../../index.aspx">Inicio</a>
         <form id="form" action="./Search.aspx" method="post">
           <input
             type="text"
@@ -62,17 +62,17 @@
           />
           <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="./SignUp.html">Sign Up</a>
-        <a href="./LogIn.html">Log In</a>
+        <a href="./SignUp.aspx">Sign Up</a>
+        <a href="./LogIn.aspx">Log In</a>
         <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
       </nav>
       <br />
       <nav>
-        <a href="../Nav-Header2/hombres.html">Hombres</a>
-        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
-        <a href="../Nav-Header2/ninos.html">Ninos</a>
+        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
+        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
+        <a href="../Nav-Header2/ninos.aspx">Ninos</a>
       </nav>
     </header>
 
