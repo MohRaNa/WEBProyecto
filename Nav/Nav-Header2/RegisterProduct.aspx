@@ -51,26 +51,26 @@
   <body>
     <header>
       <nav>
-        <a href="../../index.html">Inicio</a>
+        <a href="../../index.aspx">Inicio</a>
         <form id="search-form">
           <input type="text" id="search-input" placeholder="Buscar" />
           <input
             type="button"
-            onclick="location.href='../Catalog.html';"
+            onclick="location.href='../../index.aspx';"
             value="Search"
           />
         </form>
         <a href="./SignUp.html">Sign Up</a>
-        <a href="./LogIn.html">Log In</a>
-        <a href="./Cart.html">
+        <a href="./LogIn.aspx">Log In</a>
+        <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
       </nav>
       <br />
       <nav>
-        <a href="../Nav-Header2/hombres.html">Hombres</a>
-        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
-        <a href="../Nav-Header2/ninos.html">Niños</a>
+        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
+        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
+        <a href="../Nav-Header2/ninos.aspx">Niños</a>
       </nav>
     </header>
 

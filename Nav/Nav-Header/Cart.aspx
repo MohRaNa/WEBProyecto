@@ -62,7 +62,7 @@
           />
           <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="./SignUp.aspx">Sign Up</a>
+        <a href="./SignUp.html">Sign Up</a>
         <a href="./LogIn.aspx">Log In</a>
         <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
@@ -157,7 +157,7 @@
     <a href="#" id="checkout-button" class="checkout-button">Realizar pago</a>
 <footer>
       <p>Todos los derechos reservados. &copy; 2023</p>
-    </footer>
+ </footer>
 
     <script src="script.js"></script>
   </body>
