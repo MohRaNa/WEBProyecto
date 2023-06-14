@@ -18,8 +18,8 @@
           />
           <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="./SignUp.aspx">Sign Up</a>
-        <a href="./LogIn.aspx">Log In</a>
+        <a href="./LogOut.aspx">Log Out</a>
+        Bienvenid@, <%Response.Write(Session("username"))%>
         <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
