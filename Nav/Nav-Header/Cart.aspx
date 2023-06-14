@@ -52,7 +52,7 @@
   <body>
     <header>
       <nav>
-        <a href="../../index.aspx">Inicio</a>
+        <a href="../../index.html">Inicio</a>
         <form id="form" action="./Search.aspx" method="post">
           <input
             type="text"
@@ -70,77 +70,61 @@
       </nav>
       <br />
       <nav>
-        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
-        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
-        <a href="../Nav-Header2/ninos.aspx">Ninos</a>
+        <a href="../Nav-Header2/hombres.html">Hombres</a>
+        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
+        <a href="../Nav-Header2/ninos.html">Ninos</a>
       </nav>
     </header>
 
-<% // Archivo: Carrito.aspx
-    string Producto, Precio, Cantidad;
-
-    string sql = @"SELECT * FROM Order";
-
+    <%
+    // Archivo: Carrito.aspx
+    string Producto, Precio, Cantidad, DiaEntrega, Total;
+    
+    string sql = @"SELECT P.*, CONVERT(date, O.deliverDate) AS deliverDate, O.totalPrice, OD.quantity, OD.price FROM Product P INNER JOIN OrderDetails OD ON P.idProduct = OD.idProducts INNER JOIN [Order] O ON OD.idOrder = O.idOrder";
+    
     using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
     {
         conn.Open();
-
+    
         SqlCommand cmd = new SqlCommand(sql, conn);
-
+    
         SqlDataReader dr = cmd.ExecuteReader();
-        Response.Write("<table border='1' style='border-collapse:collapse:' style='font-weight: bold'><tr><td>Producto</td><td>Precio</td><td>Cantidad</td><td>Total</td></tr>");
+        Response.Write("<table border='1' style='border-collapse:collapse:' style='font-weight: bold'><tr><td>Producto</td><td>Precio</td><td>Cantidad</td><td>Total</td><td>Dia de entrega</td></tr>");
         while (dr.Read())
         {
-            Producto = dr[0].ToString();
-            Precio = dr[1].ToString();
-            Cantidad = dr[2].ToString();
-
+            Producto = dr["name"].ToString();
+            Precio = dr["price"].ToString();
+            Cantidad = dr["quantity"].ToString();
+            DiaEntrega = Convert.ToDateTime(dr["deliverDate"]).ToString("yyyy-MM-dd");
+            Total = (float.Parse(Precio) * int.Parse(Cantidad)).ToString();
+            
             float precioFloat = float.Parse(Precio);
             int cantidadInt = int.Parse(Cantidad);
-            float total = precioFloat * cantidadInt;
-
-            Response.Write("<tr><td>" + Producto + "</td><td>" + Precio + "</td><td><input type='number' id='cantidad_" + Producto + "' name='cantidad_" + Producto + "' min='0' max='" + Cantidad + "' value='" + Cantidad + "' onchange='calcularTotal(\"" + Producto + "\", " + precioFloat + ")'/></td><td id='total_" + Producto + "'>" + total + "</td></tr>");
+    
+            Response.Write("<tr><td>" + Producto + "</td><td>" + Precio + "</td><td><input type='number' id='cantidad_" + Producto + "' name='cantidad_" + Producto + "' min='0' max='" + cantidadInt + "' value='" + Cantidad + "' onchange='calcularTotal(\"" + Producto + "\", " + precioFloat + ")'/></td><td id='total_" + Producto + "'>" + Total + "</td><td>" + DiaEntrega + "</td></tr>");
         }
-
+    
         conn.Close();
-
+    
         Response.Write("</table>");
     }
     
     Response.Write("<div id='sumaTotal'></div>");
     Response.Write("</body></html>");
-
-    // Agregar el botón que invoca la función guardarCambios()
-    Response.Write("<button onclick='guardarCambios()'>Guardar cambios</button>");
-
+    
     // Agregar el script de JavaScript para validar la cantidad, calcular el total y mostrar la suma total
     Response.Write("<script>");
-    Response.Write("function guardarCambios() {");
-    Response.Write("    var filas = document.getElementsByTagName('tr');");
-    Response.Write("    for (var i = 0; i < filas.length; i++) {");
-    Response.Write("        var cantidadInput = document.getElementById('cantidad_' + i);");
-    Response.Write("        var nuevaCantidad = parseInt(cantidadInput.value);");
-    Response.Write("        if (isNaN(nuevaCantidad) || nuevaCantidad < 0 || nuevaCantidad > cantidadInput.max) {");
-    Response.Write("            alert('Ingrese un número válido para la cantidad.');");
-    Response.Write("            return;");
-    Response.Write("        }");
-    Response.Write("        var precio = parseFloat(cantidadInput.getAttribute('data-precio'));");
-    Response.Write("        calcularTotal(i, precio);");
-    Response.Write("    }");
-    Response.Write("    mostrarSumaTotal();");
-    Response.Write("    alert('Cambios guardados.');");
-    Response.Write("}");
-
-    Response.Write("function calcularTotal(i, precio) {");
-    Response.Write("    var cantidadInput = document.getElementById('cantidad_' + i);");
-    Response.Write("    var totalElement = document.getElementById('total_' + i);");
+    Response.Write("function calcularTotal(producto, precio) {");
+    Response.Write("    var cantidadInput = document.getElementById('cantidad_' + producto);");
+    Response.Write("    var totalElement = document.getElementById('total_' + producto);");
     Response.Write("    var nuevaCantidad = parseInt(cantidadInput.value);");
     Response.Write("    var total = precio * nuevaCantidad;");
     Response.Write("    totalElement.textContent = total.toFixed(2);");
+    Response.Write("    mostrarSumaTotal();");
     Response.Write("}");
 
     Response.Write("function mostrarSumaTotal() {");
-    Response.Write("    var totales = document.querySelectorAll('[id^=\"total_\"]');");
+    Response.Write("    var totales = document.querySelectorAll('[id^=\'total_\']');");
     Response.Write("    var sumaTotal = 0;");
     Response.Write("    for (var i = 0; i < totales.length; i++) {");
     Response.Write("        var total = parseFloat(totales[i].textContent);");
@@ -148,8 +132,11 @@
     Response.Write("    }");
     Response.Write("    document.getElementById('sumaTotal').textContent = 'Suma total: ' + sumaTotal.toFixed(2);");
     Response.Write("}");
+
     Response.Write("</script>");
 %>
+
+
 
 
 <div id="cart-total"></div>
@@ -157,7 +144,7 @@
     <a href="#" id="checkout-button" class="checkout-button">Realizar pago</a>
 <footer>
       <p>Todos los derechos reservados. &copy; 2023</p>
- </footer>
+    </footer>
 
     <script src="script.js"></script>
   </body>
