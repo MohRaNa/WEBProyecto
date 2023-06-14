@@ -34,6 +34,7 @@
         <a href="./hombres.aspx">Hombres</a>
         <a href="./mujeres.aspx">Mujeres</a>
         <a href="./ninos.aspx">Niños</a>
+        <a href="RegisterProduct.aspx">Registro Productos</a>
       </nav>
     </header>
 

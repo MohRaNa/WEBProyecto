@@ -3,58 +3,98 @@
 <%@ import namespace="System.Data.SqlClient" %>
 <%@ import namespace="System.Configuration" %>
 
-<%
-string idProduct = Request.Form["idProduct"];
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detalles del producto</title>
+    <link rel="stylesheet" href="../../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="../../index.aspx">Inicio</a>
+        <form id="form" action="./Search.aspx" method="post">
+          <input
+            type="text"
+            id="search-input"
+            name="search-input"
+            placeholder="Buscar"
+          />
+          <input class="submit" type="submit" value="Submit" />
+        </form>
+        <a href="./SignUp.html">Sign Up</a>
+        <a href="./LogIn.html">Log In</a>
+        <a href="./Cart.aspx">
+          <img src="../../assets/carrito.png" width="30px" height="30px" />
+        </a>
+      </nav>
+      <br />
+      <nav>
+        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
+        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
+        <a href="../Nav-Header2/ninos.aspx">Ninos</a>
+        <a href="../Nav-Header2/RegisterProduct.aspx">Registro Productos</a>
 
-string orderDate = DateTime.Now.ToString("yyyy-MM-dd");
-string deliverDate = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd");
-decimal totalPrice;
+      </nav>
+    </header>
+    <main>
+      <div class="product-details">
+        <%  
+        // Obtener el idProduct de la consulta
+        string idProduct = Request.QueryString["id"];
 
-string sqlGetPrice = @"SELECT cost FROM [dbo].[Product] WHERE idProduct = @idProduct";
+        string Name, Description, Cost, Color, Stock, Size;
 
-using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
-{
-  conn.Open();
-  SqlCommand cmdGetPrice = new SqlCommand(sqlGetPrice, conn);
-  cmdGetPrice.Parameters.AddWithValue("@idProduct", idProduct);
-  SqlDataReader drGetPrice = cmdGetPrice.ExecuteReader();
+        string sql = @"SELECT name, description, size, cost, color, stock FROM [dbo].[Product] WHERE idProduct = @idProduct";
 
-  if (drGetPrice.Read())
-  {
-    totalPrice = Convert.ToDecimal(drGetPrice["cost"]);
-    drGetPrice.Close();
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
+        {
+          conn.Open();
+          SqlCommand cmd = new SqlCommand(sql, conn);
+          cmd.Parameters.AddWithValue("@idProduct", idProduct);
+          SqlDataReader dr = cmd.ExecuteReader();
 
-    // Insertar en la tabla Order
-    string sqlInsertOrder = @"INSERT INTO [dbo].[Order] (orderDate, deliverDate, totalPrice, idUser) VALUES (@orderDate, @deliverDate, @totalPrice, 1); SELECT SCOPE_IDENTITY();";
+          if (dr.Read())
+          {
+            Name = dr["name"].ToString();
+            Description = dr["description"].ToString();
+            Size = dr["size"].ToString();
+            Cost = dr["cost"].ToString();
+            Color = dr["color"].ToString();
+            Stock = dr["stock"].ToString();
 
-    SqlCommand cmdInsertOrder = new SqlCommand(sqlInsertOrder, conn);
-    cmdInsertOrder.Parameters.AddWithValue("@orderDate", orderDate);
-    cmdInsertOrder.Parameters.AddWithValue("@deliverDate", deliverDate);
-    cmdInsertOrder.Parameters.AddWithValue("@totalPrice", totalPrice);
-    int orderId = Convert.ToInt32(cmdInsertOrder.ExecuteScalar());
+            %>
+            <h2><%= Name %></h2>
+            <p><%= Description %></p>
+            <p>Size: <%= Size %></p>
+            <p>Cost: <%= Cost %></p>
+            <p>Color: <%= Color %></p>
+            <p>Stock: <%= Stock %></p>
+            <form method="post" action="AddToOrder.aspx">
+              <input type="hidden" name="idProduct" value="<%= idProduct %>" />
+              <input type="submit" value="Agregar al carrito" />
+            </form>
+            <%
+          }
+          else
+          {
+            // El producto no existe
+            %>
+            <h2>Producto no encontrado</h2>
+            <p>El producto que estás buscando no existe.</p>
+            <%
+          }
 
-    // Insertar en la tabla OrderDetails
-    string sqlInsertOrderDetails = @"INSERT INTO [dbo].[OrderDetails] (price, quantity, idProducts, idOrder) VALUES (@price, @quantity, @idProduct, @idOrder)";
-
-    SqlCommand cmdInsertOrderDetails = new SqlCommand(sqlInsertOrderDetails, conn);
-    cmdInsertOrderDetails.Parameters.AddWithValue("@price", totalPrice);
-    cmdInsertOrderDetails.Parameters.AddWithValue("@quantity", 1);
-    cmdInsertOrderDetails.Parameters.AddWithValue("@idProducts", idProduct); // Reemplazar "idProduct" por el nombre correcto de la columna
-    cmdInsertOrderDetails.Parameters.AddWithValue("@idOrder", orderId);
-    
-    cmdInsertOrderDetails.ExecuteNonQuery();
-    
-
-    // Redireccionar al carrito de compras o a otra página de confirmación
-    Response.Redirect("./Cart.aspx");
-  }
-  else
-  {
-    // El producto no existe
-    drGetPrice.Close();
-    Response.Redirect("./ProductNotFound.aspx");
-  }
-
-  conn.Close();
-}
-%>
+          dr.Close();
+          conn.Close();
+        }
+        %>
+      </div>
+    </main>
+    <footer>
+      <p>Todos los derechos reservados. &copy; 2023</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

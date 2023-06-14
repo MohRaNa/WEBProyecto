@@ -21,6 +21,7 @@
       <a href="./Nav/Nav-Header/SignUp.html">Sign Up</a>
       <a href="./Nav/Nav-Header/LogIn.html">Log In</a>
       <a href="./Nav/Nav-Header/Cart.aspx">
+        
         <img src="./assets/carrito.png" width="30px" height="30px" />
       </a>
     </nav>
@@ -29,6 +30,7 @@
       <a href="./Nav/Nav-Header2/hombres.aspx">Hombres</a>
       <a href="./Nav/Nav-Header2/mujeres.aspx">Mujeres</a>
       <a href="./Nav/Nav-Header2/ninos.aspx">Niños</a>
+      <a href="./Nav/Nav-Header2/RegisterProduct.aspx">Registro Productos</a>
     </nav>
   </header>
 
@@ -96,13 +98,7 @@
     
     
   </main>
-  <footer style="  position: relative;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  flex-shrink: 0;">
+  <footer >
     <p>Todos los derechos reservados. &copy; 2023</p>
   </footer>
   <script src="script.js"></script>

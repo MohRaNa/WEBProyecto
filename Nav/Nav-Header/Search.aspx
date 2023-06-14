@@ -29,6 +29,8 @@
         <a href="../Nav-Header2/hombres.aspx">Hombres</a>
         <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
         <a href="../Nav-Header2/ninos.aspx">Niños</a>
+        <a href="../Nav-Header2/RegisterProduct.aspx">Registro Productos</a>
+
       </nav>
     </header>
     <main>

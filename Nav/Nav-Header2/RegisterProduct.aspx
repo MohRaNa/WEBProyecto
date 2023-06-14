@@ -68,9 +68,10 @@
       </nav>
       <br />
       <nav>
-        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
-        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
-        <a href="../Nav-Header2/ninos.aspx">Niños</a>
+        <a href="hombres.aspx">Hombres</a>
+        <a href="mujeres.aspx">Mujeres</a>
+        <a href="ninos.aspx">Niños</a>
+        <a href="RegisterProduct.aspx">Registro Productos</a>
       </nav>
     </header>
 
@@ -110,9 +111,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-<div class="flex-container">
-   
-  <div class="item1">item 1</div>
-
-</div>
