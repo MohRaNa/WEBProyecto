@@ -73,7 +73,7 @@
       
     </main>
 
-    <footer>
+    <footer style="position: relative;">
       <p>Todos los derechos reservados. &copy; 2023</p>
     </footer>
 

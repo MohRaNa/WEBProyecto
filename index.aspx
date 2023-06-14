@@ -96,10 +96,15 @@
     
     
   </main>
-  <footer>
+  <footer style="  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  flex-shrink: 0;">
     <p>Todos los derechos reservados. &copy; 2023</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

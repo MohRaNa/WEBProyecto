@@ -74,10 +74,8 @@
         %>
       </div>
     </main>
-    <footer>
-      <ul>
+    <footer style="position: relative;"
         <p>Todos los derechos reservados. &copy; 2023</p>
-      </ul>
     </footer>
     <script src="script.js"></script>
     <script>

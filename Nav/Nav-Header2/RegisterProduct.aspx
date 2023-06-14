@@ -90,12 +90,16 @@
       <input type="text" id="color" name="color" /><br />
       <label for="stock">Stock:</label><br />
       <input type="number" id="stock" name="stock" /><br />
-      <label for="idUser">idUser:</label><br />
-      <input type="number" id="idUser" name="idUser" /><br />
+      <label for="category">Category:</label>
+      <select name="category" id="category" required>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Niño">Niño</option>
+      </select><br><br>
       <label for="image">Image:</label><br />
       <input type="file" id="image" name="image" /><br />
       <br />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Guardar" />
     </form>
 
     <main></main>

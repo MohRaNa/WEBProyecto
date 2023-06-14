@@ -34,16 +34,15 @@ using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStr
     int orderId = Convert.ToInt32(cmdInsertOrder.ExecuteScalar());
 
     // Insertar en la tabla OrderDetails
-    string sqlInsertOrderDetails = @"INSERT INTO [dbo].[OrderDetails] (price, quantity, idProducts, idOrder) VALUES (@price, @quantity, @idProduct, @idOrder)";
+    string sqlInsertOrderDetails = @"INSERT INTO [dbo].[OrderDetails] (price, quantity, idProduct, idOrder) VALUES (@price, @quantity, @idProduct, @idOrder)";
 
     SqlCommand cmdInsertOrderDetails = new SqlCommand(sqlInsertOrderDetails, conn);
     cmdInsertOrderDetails.Parameters.AddWithValue("@price", totalPrice);
     cmdInsertOrderDetails.Parameters.AddWithValue("@quantity", 1);
-    cmdInsertOrderDetails.Parameters.AddWithValue("@idProducts", idProduct); // Reemplazar "idProduct" por el nombre correcto de la columna
+    cmdInsertOrderDetails.Parameters.AddWithValue("@idProduct", idProduct);
     cmdInsertOrderDetails.Parameters.AddWithValue("@idOrder", orderId);
-    
+
     cmdInsertOrderDetails.ExecuteNonQuery();
-    
 
     // Redireccionar al carrito de compras o a otra página de confirmación
     Response.Redirect("./Cart.aspx");

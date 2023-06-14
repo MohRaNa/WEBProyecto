@@ -52,7 +52,7 @@
   <body>
     <header>
       <nav>
-        <a href="../../index.html">Inicio</a>
+        <a href="../../index.aspx">Inicio</a>
         <form id="form" action="./Search.aspx" method="post">
           <input
             type="text"
