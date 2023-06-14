@@ -70,9 +70,9 @@
       </nav>
       <br />
       <nav>
-        <a href="../Nav-Header2/hombres.html">Hombres</a>
-        <a href="../Nav-Header2/mujeres.html">Mujeres</a>
-        <a href="../Nav-Header2/ninos.html">Ninos</a>
+        <a href="../Nav-Header2/hombres.aspx">Hombres</a>
+        <a href="../Nav-Header2/mujeres.aspx">Mujeres</a>
+        <a href="../Nav-Header2/ninos.aspx">Ninos</a>
         <a href="../Nav-Header2/RegisterProduct.aspx">Registro Productos</a>
       </nav>
     </header>
