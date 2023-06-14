@@ -1,6 +1,7 @@
 <%@ Page Language="C#" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="System.Collections" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -32,7 +33,8 @@
 
                 if (count > 0)
                 {
-                    Response.Redirect("../../index.aspx");
+                    Session["username"] = name;
+                    Response.Redirect("profile.aspx");
                 }
                 else
                 {
