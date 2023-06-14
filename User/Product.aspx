@@ -45,7 +45,7 @@
 					}
 				catch(Exception e)
 					{
-				Response.Write("Excepci�n :" + e);
+				Response.Write("Excepcion :" + e);
                 conn.Close();
 				Response.Write("Error al guardar los datos<br>");
 

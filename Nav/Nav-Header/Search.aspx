@@ -18,8 +18,8 @@
           <input type="text" id="search-input" name="search-input" placeholder="Buscar" />
           <input class="submit" type="submit" value="Submit" />
         </form>
-        <a href="./SignUp.aspx">Sign Up</a>
-        <a href="./LogIn.aspx">Log In</a>
+        <a href="./SignUp.html">Sign Up</a>
+        <a href="./LogIn.html">Log In</a>
         <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>

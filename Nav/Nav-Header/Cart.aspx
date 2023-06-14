@@ -63,7 +63,7 @@
           <input class="submit" type="submit" value="Submit" />
         </form>
         <a href="./SignUp.html">Sign Up</a>
-        <a href="./LogIn.aspx">Log In</a>
+        <a href="./LogIn.html">Log In</a>
         <a href="./Cart.aspx">
           <img src="../../assets/carrito.png" width="30px" height="30px" />
         </a>
@@ -79,7 +79,7 @@
 <% // Archivo: Carrito.aspx
     string Producto, Precio, Cantidad;
 
-    string sql = @"SELECT * FROM Product";
+    string sql = @"SELECT * FROM Order";
 
     using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
     {
@@ -91,9 +91,9 @@
         Response.Write("<table border='1' style='border-collapse:collapse:' style='font-weight: bold'><tr><td>Producto</td><td>Precio</td><td>Cantidad</td><td>Total</td></tr>");
         while (dr.Read())
         {
-            Producto = dr[1].ToString();
-            Precio = dr[4].ToString();
-            Cantidad = dr[6].ToString();
+            Producto = dr[0].ToString();
+            Precio = dr[1].ToString();
+            Cantidad = dr[2].ToString();
 
             float precioFloat = float.Parse(Precio);
             int cantidadInt = int.Parse(Cantidad);

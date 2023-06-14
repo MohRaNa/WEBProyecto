@@ -20,7 +20,6 @@
             string name = Request.Form["uname"];
             string password = Request.Form["psw"];
 
-            // Consulta SQL para verificar el usuario y la contraseña   
             string sql = "SELECT COUNT(*) FROM [dbo].[User] WHERE name = @name AND password = @password";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["default"].ToString()))
@@ -33,13 +32,11 @@
 
                 if (count > 0)
                 {
-                    // Usuario y contraseña válidos, redirigir al index.aspx
                     Response.Redirect("../../index.aspx");
                 }
                 else
                 {
-                    // Usuario y/o contraseña incorrectos, mostrar mensaje de error o redirigir a una página de error
-                    Response.Redirect("./LogIn.html");
+                    Response.Redirect("./LogIn.aspx");
                 }
 
                 conn.Close();

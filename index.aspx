@@ -19,7 +19,7 @@
         <input class="submit" type="submit" value="Submit" />
       </form>
       <a href="./Nav/Nav-Header/SignUp.html">Sign Up</a>
-      <a href="./Nav/Nav-Header/LogIn.aspx">Log In</a>
+      <a href="./Nav/Nav-Header/LogIn.html">Log In</a>
       <a href="./Nav/Nav-Header/Cart.aspx">
         <img src="./assets/carrito.png" width="30px" height="30px" />
       </a>
@@ -69,7 +69,7 @@
       <ul>
         <li>
           <img
-            src="https://via.placeholder.com/400x400.png?text=Mujeres"
+            src="./assets/mujer.jpg"
             alt="Mujeres"
           />
           <h3>Mujeres</h3>
@@ -77,7 +77,7 @@
         </li>
         <li>
           <img
-            src="https://via.placeholder.com/400x400.png?text=Hombres"
+            src="./assets/hombre.jpg"
             alt="Hombres"
           />
           <h3>Hombres</h3>
@@ -85,7 +85,7 @@
         </li>
         <li>
           <img
-            src="https://via.placeholder.com/400x400.png?text=Niños"
+            src="./assets/nino.jpg"
             alt="Niños"
           />
           <h3>Niños</h3>
